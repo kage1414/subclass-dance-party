@@ -47,9 +47,20 @@ makeDancer.prototype.step = function() {
   // the basic dancer doesn't do anything interesting at all on each step,
   // it just schedules the next step
   var that = this;
-  console.log(that);
-  setTimeout(that.step, 100);
+  // console.log(that.timeBetweenSteps);
+  setTimeout(this.step.bind(this), 100);
 };
+
+
+
+// dancer.step = function () {
+//   // the basic dancer doesn't do anything interesting at all on each step,
+//   // it just schedules the next step
+//   setTimeout(dancer.step, timeBetweenSteps);
+// };
+// dancer.step();
+
+
 
 makeDancer.prototype.setPosition = function(top, left) {
   // Use css top and left properties to position our <span> tag

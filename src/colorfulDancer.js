@@ -1,6 +1,6 @@
 var ColorfulDancer = function (top, left, timeBetweenSteps) {
   this.colorIndex = 0;
-  this.colorArray = ['red', 'orange', 'yellow', 'green', 'blue', 'purple'];
+  this.colorArray = ['blanchedalmond', 'red', 'orange', 'yellow', 'limegreen', 'green', 'cornflowerblue', 'blue', 'blueviolet', 'purple'];
   makeDancer.call(this, top, left, timeBetweenSteps);
 };
 
@@ -15,5 +15,5 @@ ColorfulDancer.prototype.step = function() {
   // toggle() is a jQuery method to show/hide the <span> tag.
   // See http://api.jquery.com/category/effects/ for this and
   // other effects you can use on a jQuery-wrapped html tag.
-  this.$node.css('border-color', this.colorArray[this.colorIndex % 6]);
+  this.$node.css('border-color', this.colorArray[this.colorIndex % this.colorArray.length]);
 };

@@ -1,12 +1,15 @@
 $(document).ready(function () {
   window.dancers = [];
 
+  // make it so that we can undo the line up? array of old values?
   $('.lineUpButton').on('click', function (event) {
-    console.log('you clicked lineUpButton!');
-    console.log(window.dancers);
     for (var i = 0; i < window.dancers.length; i++) {
       window.dancers[i].setPosition(40, 20 + (i * 50));
     }
+  });
+
+  $('body').on('mouseover', '.dancer', function (event) {
+    window.dancers[$(this).attr('id')].setPosition($('body').height() * Math.random(), $('body').width() * Math.random());
   });
 
   $('.addDancerButton').on('click', function (event) {
@@ -30,6 +33,8 @@ $(document).ready(function () {
 
     // make a dancer with a random position
 
+
+    // Add 40? pixels to "top" so dancers won't spawn over header?
     var dancer = new dancerMakerFunction(
       $('body').height() * Math.random(),
       $('body').width() * Math.random(),

@@ -1,6 +1,4 @@
-describe('subclassDanceParty', function () {
-
-
+describe('subClassDanceParty', function () {
 
   describe('blinkyDancer', function() {
 
@@ -38,17 +36,32 @@ describe('subclassDanceParty', function () {
   });
 
   describe('colorfulDancer', function() {
-    it('should call step at least once per second', function() {
-      sinon.spy(colorfulDancer, 'step');
-      expect(colorfulDancer.step.callCount).to.be.equal(0);
-      clock.tick(timeBetweenSteps); // ? it seems an extra tick is necessary...
-      clock.tick(timeBetweenSteps);
+    var colorfulDancer, clock;
+    var timeBetweenSteps = 100;
 
-      expect(colorfulDancer.step.callCount).to.be.equal(1);
+    beforeEach(function() {
+      clock = sinon.useFakeTimers();
+      colorfulDancer = new ColorfulDancer(10, 20, timeBetweenSteps);
+    });
 
-      clock.tick(timeBetweenSteps);
-      expect(colorfulDancer.step.callCount).to.be.equal(2);
+    it('should have a step function that makes its color change', function() {
+      colorfulDancer.step();
+      expect(colorfulDancer.$node.css('border-color')).to.not.equal('darkolivegreen');
     });
   });
 
+  describe('growingDancer', function() {
+    var growingDancer, clock;
+    var timeBetweenSteps = 100;
+
+    beforeEach(function() {
+      clock = sinon.useFakeTimers();
+      growingDancer = new GrowingDancer(10, 20, timeBetweenSteps);
+    });
+
+    it('should have a step function that makes its size change', function() {
+      growingDancer.step();
+      expect(growingDancer.$node.css('border-width')).to.not.equal('10');
+    });
+  });
 });

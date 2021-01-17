@@ -1,5 +1,6 @@
 var makeDancer = function(top, left, timeBetweenSteps, color) {
-  this.$node = $('<span class="dancer" id=' + (window.dancers.length) + '></span>');
+  this.$node = $('<span class="dancer" id="' + window.dancers.length + '"></span>'); // Uncomment to run dancefloor.html
+  // this.$node = $('<span class="dancer"></span>'); // Uncomment to run specrunner.html
   this.$node.css('border-color', color);
   this.top = top;
   this.left = left;

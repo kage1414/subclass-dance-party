@@ -1,23 +1,15 @@
 var MovingDancer = function(top, left, timeBetweenSteps) {
   this.speed = 5;
   this.targetDancer = this.setTarget();
-  makeDancer.call(this, top, left, timeBetweenSteps);
+  makeDancer.call(this, top, left, timeBetweenSteps, 'green');
 };
 
 MovingDancer.prototype = Object.create(makeDancer.prototype);
 MovingDancer.prototype.constructor = MovingDancer;
 
 MovingDancer.prototype.step = function() {
-  // call the old version of step at the beginning of any call to this new version of step
   makeDancer.prototype.step.call(this);
-  // toggle() is a jQuery method to show/hide the <span> tag.
-  // See http://api.jquery.com/category/effects/ for this and
-  // other effects you can use on a jQuery-wrapped html tag.
-
-  // add if statement here re: retargeting only if we're sufficiently far from target
   this.moveDancer();
-
-
 };
 
 MovingDancer.prototype.setTarget = function() {
